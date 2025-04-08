@@ -1,17 +1,11 @@
-"use strict";
-module.exports = {
-  User: require("./user"),
+'use strict'
+const User = require('./user') //require the model
+async function init() {
+    await User.sync(); // sync the model
+    // also sync any extra models here
 };
-
-let express = require("express");
-let router = express.Router();
-let Controllers = require("../controllers"); // index.js
-// Adds a GET route to return all users
-router.get("/", (req, res) => {
-  Controllers.userController.getUsers(res);
-});
-// Adds a POST route to create a new user
-router.post("/create", (req, res) => {
-  Controllers.userController.createUser(req.body, res);
-});
-module.exports = router;
+init();
+module.exports = {
+    User, // export the model
+    // also export any extra models here
+};
