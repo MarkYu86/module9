@@ -2,39 +2,38 @@ const { DataTypes, Model } = require("sequelize");
 const dbConnect = require("../dbConnect");
 const sequelizeInstance = dbConnect.Sequelize;
 
-class User extends Model {}
+class Post extends Model {}
 
-User.init(
+Post.init(
   {
-    user_id: {
+    post_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    password_hash: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    profile_picture: {
+    image_url: {
       type: DataTypes.STRING,
       allowNull: true,
     },
   },
   {
     sequelize: sequelizeInstance,
-    modelName: "users",
+    modelName: "posts",
     timestamps: true,
     freezeTableName: true,
   }
 );
 
-module.exports = User;
+module.exports = Post;

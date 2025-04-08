@@ -2,39 +2,34 @@ const { DataTypes, Model } = require("sequelize");
 const dbConnect = require("../dbConnect");
 const sequelizeInstance = dbConnect.Sequelize;
 
-class User extends Model {}
+class Comment extends Model {}
 
-User.init(
+Comment.init(
   {
-    user_id: {
+    comment_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
-      type: DataTypes.STRING,
+    post_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    password_hash: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    profile_picture: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
   },
   {
     sequelize: sequelizeInstance,
-    modelName: "users",
+    modelName: "comments",
     timestamps: true,
     freezeTableName: true,
   }
 );
 
-module.exports = User;
+module.exports = Comment;
