@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to my Blog MySQL application." });
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

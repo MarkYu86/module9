@@ -6,7 +6,7 @@ class Like extends Model {}
 
 Like.init(
   {
-    like_id: {
+    id:{
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
