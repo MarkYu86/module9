@@ -6,7 +6,7 @@ let userRoutes = require("./routes/userRoutes");
 let postRoutes = require("./routes/postRoutes");
 let commentRoutes = require("./routes/commentRoutes");
 let likeRoutes = require("./routes/likeRoutes");
-let monsterRoutes = require ('./routes/monsterRoutes')
+let monsterRoutes = require ('./routes/monsterRoutes');
 
 app.use(express.json());
 
