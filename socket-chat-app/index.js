@@ -10,7 +10,16 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    io.emit('connection', 'a user connected');
+  console.log('a user joined the chat');
+
+  socket.on('chat message', (msg) => {
+    socket.broadcast.emit('chat message', 'User: ' + msg);
+    socket.emit('chat message', 'Me: ' + msg); // send only to sender
+});
+
+  socket.on('disconnect', () => {
+    console.log('user left the chat');
+  });
 });
 
 server.listen(3000, () => {
